@@ -1,0 +1,149 @@
+<h1>Live Project</h1>
+
+I was able to join a two week sprint working with a team to develop a home page for a recipe sharing website according to the clients wants and needs.
+To accomplish this we utilized HTML/Bootstrap, CSS and JavaScript. We also used AzureOps to help we version control and to assign stories to the team. 
+I am very proud of what I was able to accomplish in creating the home page's Nav Bar and Hero Banner. Below I will detail the stories I worked on and highlight 
+code snippets as well.
+
+
+<h3>NavBar</h3>
+
+The homepage had a dyanmic nav bar. I was able to use Bootstrap, CSS and Jquery to create it to the clients needs and make it dynamic.
+
+<!--Nav Bar section-->
+    <div class="nav-container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Cookery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <li class="nav-item dropdown">
+                <a class="nav-link"  href="#" role="button"  aria-expanded="false">
+                  Food
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All Food</a></li>
+                  <li><a class="dropdown-item" href="#">Healthy</a></li>
+                  <li><a class="dropdown-item" href="#">Featured</a></li>
+                  <li><a class="dropdown-item" href="#">Vegan</a></li>
+                  <li><a class="dropdown-item" href="#">Desserts</a></li>
+                  <li><a class="dropdown-item" href="#">Quick</a></li>
+                </ul>
+              </li>
+            <li class="nav-item"> 
+              <a class="nav-link" href="#">Drinks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Featured</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Stories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!--End Nav Bar Section-->
+  
+  It was a challenge using JQuery to have the navbar shrink while scrolling down the page. I'm happy with the code I used and the result.
+  
+  $(function(){
+    $('.navbar').data('size','big');
+});
+
+
+$(window).scroll(function(){
+    if($(document).scrollTop() > 0)
+    {
+        if($('.navbar').data('size') == 'big')
+        {
+            $('.navbar').data('size','small');
+            $('.navbar').stop().animate({
+                height:'60px'
+            },600);
+            $('.navbar-brand').stop().animate({
+                fontSize: '30px'
+            },600);
+        }
+    }
+    else
+    {
+        if($('.navbar').data('size') == 'small')
+        {
+            $('.navbar').data('size','big');
+            $('.navbar').stop().animate({
+                height:'100px'
+            },600);
+            $('.navbar-brand').stop().animate({
+                fontSize: '40px'
+            },600);
+        }  
+    }
+});
+
+
+<h3>Hero Banner</h3>
+
+The clients asked for a hero banner that featured a main dish photo on one side and text on the other. I used Bootstrap to create a two column row and then stylized the 
+the hero banner to the clients needs using CSS.
+
+
+<!--Hero Banner Section-->
+  <div class="container-fluid ">
+    <div class="row">
+        <div class="col">
+          <p class="banner-title">Simple Recipes to save<br>
+            you time and money</p><br>
+            <p class="banner-text">Satisfy your cravings with our wide selection of simple<br>
+            and fast recipes.</p>  
+        </div>
+        <div class="col">
+          <img class="hero-image" src="./images/salmon-bowl.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  CSS:
+  /*Hero Banner Styling*/
+ .container-fluid {
+    padding-right: 0;
+    
+    }
+
+ 
+
+ .hero-image {
+    max-width: 100%;
+    }
+
+ .banner-title, .banner-text {
+    font-family: var(--body-font);
+    left: 25%;
+    top: 20%;
+    position: relative;
+    display: flex;
+    z-index: -1;
+    }
+
+ .banner-title {
+    padding-top: 8rem;
+    font-weight: bold;
+    font-size: 2vw;
+ }
+
+ .banner-text {
+    font-size: 1.25vw;
+ }
+
+  
+  
